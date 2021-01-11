@@ -85,9 +85,23 @@ public class DAOConge implements IDAOConge{
 			Query query= em.createQuery("from Conge c where c.etat='ATTENTE'",Conge.class);
 			demandeAttente=query.getResultList();
 		}
-		catch(Exception e){System.out.println("Error findAlFilter Conge");}
+		catch(Exception e){System.out.println("Error demandeAttente Conge");}
 		em.close();
 		return demandeAttente;
 	}
 
+	@Override
+	public List<Conge> demandeSalarie(Integer id) {
+		List<Conge> conges = new ArrayList();
+		EntityManager em=Context.getInstance().getEmf().createEntityManager();
+		try 
+		{
+			Query query= em.createQuery("Select c from Conge c left join c.salarie s where s.id= :id",Conge.class);
+			query.setParameter("id",id);
+			conges=query.getResultList();
+		}
+		catch(Exception e){System.out.println("Error demandeSalarie Conge");}
+		em.close();
+		return conges;
+	}
 }

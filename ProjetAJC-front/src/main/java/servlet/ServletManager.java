@@ -34,12 +34,4 @@ public class ServletManager extends HttpServlet {
 		Context.getInstance().getDaoConge().save(conge);
 		doGet(request,response);
 	}
-	
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		Integer id = Integer.parseInt(request.getParameter("id_salarie"));
-		Salarie e = Context.getInstance().getDaoSalarie().findById(id);
-		Context.getInstance().getDaoSalarie().delete(e);
-		response.sendRedirect("salarie");
-	}
 }

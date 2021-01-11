@@ -55,8 +55,7 @@ public class Connection extends HttpServlet {
 		{
 			request.getSession().setAttribute("compte", c);
 			request.getSession().setAttribute("typeCompte", "salarie");
-			this.getServletContext().getRequestDispatcher("/WEB-INF/salarie.jsp").forward(request, response);
-//			response.sendRedirect("emp?id="+c.getId());
+			response.sendRedirect("salarie?id="+c.getId());
 		}
 		else 
 		{

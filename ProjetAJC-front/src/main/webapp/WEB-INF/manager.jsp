@@ -34,7 +34,7 @@
 					<tbody id="listDemande">
 						<c:forEach items="${demandes}" var="demande">
 							<tr>
-								<td>${demande.salarie.nom}</td>
+								<td>${demande.salarie.nom} ${demande.salarie.prenom}</td>
 								<td>${demande.typeConge}</td>
 								<td>${demande.dateDebut}</td>
 								<td>${demande.dateFin}</td>
