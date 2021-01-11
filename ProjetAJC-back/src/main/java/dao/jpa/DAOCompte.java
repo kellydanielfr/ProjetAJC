@@ -60,13 +60,13 @@ public class DAOCompte implements IDAOCompte{
 	}
 
 	@Override
-	public Compte connect(String login, String password) {
+	public Compte connect(String mail, String password) {
 		Compte c = null;
 		EntityManager em=Context.getInstance().getEmf().createEntityManager();
 		try 
 		{
-			Query query= em.createQuery("from Compte c where c.login=:login and c.password=:password",Compte.class);
-			query.setParameter("login", login);
+			Query query= em.createQuery("from Compte c where c.mail=:mail and c.password=:password",Compte.class);
+			query.setParameter("mail", mail);
 			query.setParameter("password", password);
 			c=(Compte) query.getSingleResult();
 		}

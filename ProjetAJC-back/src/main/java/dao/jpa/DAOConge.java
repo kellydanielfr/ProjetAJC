@@ -49,31 +49,45 @@ public class DAOConge implements IDAOConge{
 
 	@Override
 	public List<Conge> findAll() {
-		List<Conge> employes = new ArrayList();
+		List<Conge> conges = new ArrayList();
 		EntityManager em=Context.getInstance().getEmf().createEntityManager();
 		try 
 		{
 			Query query= em.createQuery("from Conge",Conge.class);
-			employes=query.getResultList();
+			conges=query.getResultList();
 		}
 		catch(Exception e){System.out.println("Error findAll Conge");}
 		em.close();
-		return employes;
+		return conges;
 	}
 	
 	@Override
 	public List<Conge> findAllFilter(String name) {
-		List<Conge> employes = new ArrayList();
+		List<Conge> conges = new ArrayList();
 		EntityManager em=Context.getInstance().getEmf().createEntityManager();
 		try 
 		{
 			Query query= em.createQuery("from Conge e where e.login like :filter",Conge.class);
 			query.setParameter("filter", "%"+name+"%");
-			employes=query.getResultList();
+			conges=query.getResultList();
 		}
 		catch(Exception e){System.out.println("Error findAlFilter Conge");}
 		em.close();
-		return employes;
+		return conges;
+	}
+	
+	@Override
+	public List<Conge> demandeAttente() {
+		List<Conge> demandeAttente = new ArrayList();
+		EntityManager em=Context.getInstance().getEmf().createEntityManager();
+		try 
+		{
+			Query query= em.createQuery("from Conge c where c.etat='ATTENTE'",Conge.class);
+			demandeAttente=query.getResultList();
+		}
+		catch(Exception e){System.out.println("Error findAlFilter Conge");}
+		em.close();
+		return demandeAttente;
 	}
 
 }

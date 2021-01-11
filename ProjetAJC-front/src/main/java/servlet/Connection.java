@@ -21,14 +21,14 @@ public class Connection extends HttpServlet {
 
 		//Si l'utilisateur est d�j� connect�, on le redirige vers la bonne page
 		//Sinon, on affiche l'ecran de connexion
-		if(request.getSession().getAttribute("typeCompte")=="admin")
+		if(request.getSession().getAttribute("typeCompte")=="manager")
 		{
-			response.sendRedirect("emp");
+			response.sendRedirect("manager");
 		}
-		else if(request.getSession().getAttribute("typeCompte")=="employe")
+		else if(request.getSession().getAttribute("typeCompte")=="salarie")
 		{
 			int idCompte=((Compte) request.getSession().getAttribute("compte")).getId();
-			response.sendRedirect("emp?id="+idCompte);
+			response.sendRedirect("salarie?id="+idCompte);
 
 		}
 		else
@@ -41,21 +41,22 @@ public class Connection extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String login=request.getParameter("login");
+		String mail=request.getParameter("mail");
 		String password = request.getParameter("password");
-		Compte c = Context.getInstance().getDaoCompte().connect(login, password);
+		Compte c = Context.getInstance().getDaoCompte().connect(mail, password);
 
 		if(c instanceof Manager) 
 		{
 			request.getSession().setAttribute("compte", c);
-			request.getSession().setAttribute("typeCompte", "admin");
-			response.sendRedirect("emp");
+			request.getSession().setAttribute("typeCompte", "manager");
+			response.sendRedirect("manager");
 		}
 		else if(c instanceof Salarie) 
 		{
 			request.getSession().setAttribute("compte", c);
-			request.getSession().setAttribute("typeCompte", "employe");
-			response.sendRedirect("emp?id="+c.getId());
+			request.getSession().setAttribute("typeCompte", "salarie");
+			this.getServletContext().getRequestDispatcher("/WEB-INF/salarie.jsp").forward(request, response);
+//			response.sendRedirect("emp?id="+c.getId());
 		}
 		else 
 		{

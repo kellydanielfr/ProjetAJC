@@ -146,6 +146,14 @@ public class Conge {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Conge [id=" + id + ", salarie=" + salarie + ", typeConge=" + typeConge + ", dateDebut=" + dateDebut
+				+ ", dateFin=" + dateFin + ", dateDemande=" + dateDemande + ", nbJour=" + nbJour + ", motif=" + motif
+				+ ", etat=" + etat + ", version=" + version + "]";
+	}
 	
 	
 }
