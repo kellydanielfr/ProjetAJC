@@ -8,8 +8,16 @@ import javax.persistence.Entity;
 
 public class Manager extends Compte {
 
-	public Manager(String login, String password, String mail) {
-		super(login,password,mail);
+
+
+	public Manager(Integer id, String mail, String password, String nom, String prenom, Service service) {
+		super(id, mail, password, nom, prenom, service);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Manager(String mail, String password, String nom, String prenom, Service service) {
+		super(mail, password, nom, prenom, service);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Manager() {

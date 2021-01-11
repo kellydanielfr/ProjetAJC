@@ -8,14 +8,17 @@ import javax.persistence.OneToOne;
 @DiscriminatorValue("salarie")
 public class Salarie extends Compte{
 
+	
 	public Salarie() {
 	}
-	
-	public Salarie(String login, String password, String mail) {
-		super(login,password,mail);
+
+	public Salarie(Integer id, String mail, String password, String nom, String prenom, Service service) {
+		super(id, mail, password, nom, prenom,service);
+	}
+
+	public Salarie(String mail, String password, String nom, String prenom, Service service) {
+		super(mail, password, nom, prenom,service);
 	}
 	
-	public Salarie(Integer id,String login, String password, String mail) {
-		super(id,login,password,mail);
-	}
+
 }
