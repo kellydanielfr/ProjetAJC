@@ -20,4 +20,4 @@
 	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mystyle.css">

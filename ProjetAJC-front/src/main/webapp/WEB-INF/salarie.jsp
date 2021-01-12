@@ -15,8 +15,44 @@
 
 
 	<h1>Mes demandes</h1>
-	<input id="btnAddEmp" type="button" class="btn btn-success"
-		value="Créer une demande de congé">
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#popupAjouter">
+  Créer une demande de congé
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="popupAjouter" tabindex="-1" role="dialog" aria-labelledby="popupAjouterLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="popupAjouterLabel">Créer une demande de congé</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="salarie" method="post">
+	      <div class="modal-body">
+	        <label for="date">Date de la demande :</label> <input id="date" name="date" type="date"	placeholder="date du jour"><br>
+	        <label for="dateDebut">Date de début :</label> <input id="dateDebut" name="dateDebut" type="date"	placeholder="date de début"><br>
+	        <label for="dateFin">Date de fin :</label> <input id="dateFin" name="dateFin" type="date"	placeholder="date de fin"><br>
+	        <label for="type">Types de congé : </label> <select id="type" name="type">
+				<option value="choose" selected="selected">Choisir un type de congé</option>
+				<option value="CP">Congés payés</option>
+				<option value="CSS">Congés sans solde</option>
+				<option value="AA">Absence autorisée</option>
+				<option value="AJ">Absence justifiée</option></select><br>
+				<label for="motif">Motif de la demande</label><textarea class="form-control" id="motif" rows="3" placeholder="Entrez un motif"></textarea>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+	        <button type="submit" class="btn btn-primary" name="btnAjouter" value="Ajouter">Sauvegarder</button>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 	<br>
 	<table class="table table-striped">
 		<thead>
@@ -53,5 +89,9 @@
 			</c:forEach>
 		</tbody>
 	</table>
+<script>
+//$('#myModal').on('shown.bs.modal', function () {$('#myInput').trigger('focus')})
+</script>
 </body>
 </html>
+

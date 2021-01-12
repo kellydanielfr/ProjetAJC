@@ -1,5 +1,5 @@
 package model;
 
 public enum TypeConge {
-	CP,CSS,AU,AJ
+	CP,CSS,AA,AJ
 }

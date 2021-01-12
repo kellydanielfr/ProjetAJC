@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,13 +24,24 @@ public class ServletSalarie extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String tache = request.getParameter("btnAnnuler");
-		Conge conge = Context.getInstance().getDaoConge().findById(Integer.parseInt(request.getParameter("id_conge")));
-		if (tache.equals("Annuler")) {
-			Context.getInstance().getDaoConge().delete(conge);
-		}
 		int idCompte=((Compte) request.getSession().getAttribute("compte")).getId();
+		if(request.getParameterMap().containsKey("btnAnnuler")) {
+			Conge conge = Context.getInstance().getDaoConge().findById(Integer.parseInt(request.getParameter("id_conge")));
+			Context.getInstance().getDaoConge().delete(conge);
+		}else if(request.getParameterMap().containsKey("btnAjouter")) {
+			System.out.println("je passe là \n\n\n\n\n\n\n");
+			LocalDate date = LocalDate.parse(request.getParameter("date"));
+			LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
+			LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
+			TypeConge type = TypeConge.valueOf(request.getParameter("type"));
+			String motif = request.getParameter("motif");
+			
+			
+			Salarie compte=(Salarie) request.getSession().getAttribute("compte");
+			compte = Context.getInstance().getDaoSalarie().save(compte);
+			Conge conge = new Conge(compte, type, dateDebut, dateFin, motif);
+			Context.getInstance().getDaoConge().save(conge);
+		}
 		response.sendRedirect("salarie?id="+ idCompte);
-		
 	}
 }
