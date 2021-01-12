@@ -13,7 +13,6 @@ public class test {
 
 	public static void main(String[] args) {
 
-		
 //		Service service1 = new Service("Compta");
 //		service1 = Context.getInstance().getDaoService().save(service1);
 //		Service service2 = new Service("Secretaire");
@@ -30,15 +29,7 @@ public class test {
 //		salarie1 = Context.getInstance().getDaoSalarie().save(salarie1);
 //		salarie2 = Context.getInstance().getDaoSalarie().save(salarie2);
 //		salarie3 = Context.getInstance().getDaoSalarie().save(salarie3);
-//		
-//		
 //
-//		
-
-//		List<Service> test = Context.getInstance().getDaoService().findAll();
-//		System.out.println(test);*/
-
-
 //		Conge conge0 = new Conge(salarie1, TypeConge.CP, LocalDate.of(2021, 01, 18), LocalDate.of(2021, 01, 20), "Vacances aux caraibes");
 //		Conge conge1 = new Conge(salarie1, TypeConge.CJ, LocalDate.of(2021, 02, 18), LocalDate.of(2021, 02, 20), "Vacances en Australie");
 //		Conge conge2 = new Conge(salarie1, TypeConge.CSS, LocalDate.of(2021, 03, 18), LocalDate.of(2021, 03, 20), "Vacances en Egypte");

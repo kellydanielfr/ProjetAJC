@@ -10,11 +10,11 @@
 </head>
 <body>
 
-	<a id="btnDisconnect" href="disconnect"><input type="button"
-		class="btn btn-danger" value="Se deconnecter"></a>
+	<a id="btnDisconnect" href="disconnect"><input type="button" class="btn btn-danger" value="Se deconnecter"></a>
 
 	<h1>Validation des demandes en attentes</h1>
-<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filtres">Voir filtres</button>
+<button id="popupFilter" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filtres">Voir filtres</button>
+
 	<div id="filtres" class="collapse">
 	<form  class="formReponse" name="formReponse" action="manager" method="post">
 	<div name="filtre" style="display: flex">
@@ -37,40 +37,42 @@
 		<div class="tab-content" id="pills-tabContent">
 			<div class="tab-pane fade show active" id="pills-emp" role="tabpanel"
 				aria-labelledby="pills-emp-tab">
-				<table class="table table-striped">
+				<table class="table table-striped text-center">
 					<thead>
 						<tr>
-							<th>Nom du demandeur</th>
-							<th>Type de demande</th>
-							<th>Date de début</th>
-							<th>Date de fin</th>
-							<th>Nombre de jour</th>
-							<th>Motif</th>
-							<th>Service</th>
-							<th>Etat</th>
-							<th></th>
+							<th class="table-dark">Nom du demandeur</th>
+							<th class="table-dark">Type de demande</th>
+							<th class="table-dark">Date de début</th>
+							<th class="table-dark">Date de fin</th>
+							<th class="table-dark">Nombre de jour</th>
+							<th class="table-dark">Motif</th>
+							<th class="table-dark">Service</th>
+							<th class="table-dark">Etat</th>
+							<th class="table-dark"></th>
 						</tr>
 					</thead>
 					<tbody id="listDemande">
 						<c:forEach items="${demandes}" var="demande">
 							<tr>
-								<td>${demande.salarie.nom} ${demande.salarie.prenom}</td>
-								<td>${demande.typeConge.libelle}</td>
-								<td>${demande.dateDebut}</td>
-								<td>${demande.dateFin}</td>
-								<td>${demande.nbJour}</td>
-								<td>${demande.motif}</td>
-								<td>${demande.salarie.service.libelle}</td>
-								<td>${demande.etat}</td>
+								<td class="table-active">${demande.salarie.nom} ${demande.salarie.prenom}</td>
+								<td class="table-active">${demande.typeConge.libelle}</td>
+								<td class="table-active">${demande.dateDebut}</td>
+								<td class="table-active">${demande.dateFin}</td>
+								<td class="table-active">${demande.nbJour}</td>
+								<td class="table-active">${demande.motif}</td>
+								<td class="table-active">${demande.salarie.service.libelle}</td>
 								<c:choose>
 					<c:when test="${demande.etat == 'VALIDE'}">
-					<td style="color:green">${demande.etat}</td>
+					<td  class="table-active" style="color:green">${demande.etat}</td>
 					</c:when>
 					<c:when test="${demande.etat == 'REFUSE'}">
-					<td style="color:red">${demande.etat}</td>
+					<td  class="table-active" style="color:red">${demande.etat}</td>
+					</c:when>
+					<c:when test="${demande.etat == 'ATTENTE'}">
+					<td  class="table-active" style="color:black">${demande.etat}</td>
 					</c:when>
 					</c:choose>
-					<td>
+					<td  class="table-active">
 								<c:if test="${demande.etat == 'ATTENTE'}">
 								
 								

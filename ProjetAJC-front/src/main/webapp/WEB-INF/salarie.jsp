@@ -61,51 +61,61 @@
 		</div>
 	
 
-	<br>
-	<table class="table table-striped">
+	<div id="content">
+		<div class="tab-content" id="pills-tabContent">
+			<div class="tab-pane fade show active" id="pills-emp" role="tabpanel"
+				aria-labelledby="pills-emp-tab">
+	<table class="table table-striped text-center">
 		<thead>
 			<tr>
-				<th>Type de demande</th>
-				<th>Date de début</th>
-				<th>Date de fin</th>
-				<th>Nombre de jour</th>
-				<th>Motif</th>
-				<th>Service</th>
-				<th>Etat</th>
-				<th></th>
+				<th class="table-dark">Type de demande</th>
+				<th class="table-dark">Date de début</th>
+				<th class="table-dark">Date de fin</th>
+				<th class="table-dark">Nombre de jour</th>
+				<th class="table-dark">Motif</th>
+				<th class="table-dark">Service</th>
+				<th class="table-dark">Etat</th>
+				<th class="table-dark"></th>
 			</tr>
 		</thead>
 		<tbody id="listDemande">
 			<c:forEach items="${demandes}" var="demande">
 				<tr>
-					<td>${demande.typeConge.libelle}</td>
-					<td>${demande.dateDebut}</td>
-					<td>${demande.dateFin}</td>
-					<td>${demande.nbJour}</td>
-					<td>${demande.motif}</td>
-					<td>${demande.salarie.service.libelle}</td>
+					<td class="table-active">${demande.typeConge.libelle}</td>
+					<td class="table-active">${demande.dateDebut}</td>
+					<td class="table-active">${demande.dateFin}</td>
+					<td class="table-active">${demande.nbJour}</td>
+					<td class="table-active">${demande.motif}</td>
+					<td class="table-active">${demande.salarie.service.libelle}</td>
 					<c:choose>
 					<c:when test="${demande.etat == 'VALIDE'}">
-					<td style="color:green">${demande.etat}</td>
+					<td class="table-active" style="color:green">${demande.etat}</td>
 					</c:when>
 					<c:when test="${demande.etat == 'REFUSE'}">
-					<td style="color:red">${demande.etat}</td>
+					<td class="table-active" style="color:red">${demande.etat}</td>
+					</c:when>
+					<c:when test="${demande.etat == 'ATTENTE'}">
+					<td class="table-active" style="color:black">${demande.etat}</td>
 					</c:when>
 					</c:choose>
+					
 					<c:if test="${demande.etat == 'ATTENTE'}">
-						<td><form class="formReponse" name="formReponse"
+					<td class="table-active">
+						<form class="formReponse" name="formReponse"
 								action="salarie" method="post">
 								<input type="hidden" value="${demande.id}" name="id_conge">
 								<input type="submit" name="btnAnnuler" class="btn btn-warning"
 									value="Annuler">
 							</form></td>
 					</c:if>
-					<td></td>
 				</tr>
 
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
+	</div>
+	</div>
 
 </body>
 <script>
