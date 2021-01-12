@@ -98,16 +98,16 @@
 					<td class="table-active" style="color:black">${demande.etat}</td>
 					</c:when>
 					</c:choose>
-					
-					<c:if test="${demande.etat == 'ATTENTE'}">
 					<td class="table-active">
+					<c:if test="${demande.etat == 'ATTENTE'}">
+					
 						<form class="formReponse" name="formReponse"
 								action="salarie" method="post">
 								<input type="hidden" value="${demande.id}" name="id_conge">
 								<input type="submit" name="btnAnnuler" class="btn btn-warning"
 									value="Annuler">
-							</form></td>
-					</c:if>
+							</form>
+					</c:if></td>
 				</tr>
 
 			</c:forEach>
