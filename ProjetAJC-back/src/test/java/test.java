@@ -51,7 +51,7 @@ public class test {
 =======
 //		List<Service> test = Context.getInstance().getDaoService().findAll();
 //		System.out.println(test);*/
->>>>>>> Stashed changes
+
 	}
 
 }

@@ -16,14 +16,14 @@
 	<h1>Mes demandes</h1>
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn trigger" data-toggle="modal"
+	<button type="button" class="btn trigger"data-toggle="modal"
 		id="popupAdd">Créer une demande de congé</button>
 
 	
 	<!-- Modal -->
 
 		<div class="modal-wrapper" role="document">
-			<div class="modal">
+			<div class="modalCreer">
 				<div class="head">
 				<a class="btn-close trigger" href="javascript:;"></a>
 					<h5 class="modal-title" id="popupAjouterLabel">Créer une

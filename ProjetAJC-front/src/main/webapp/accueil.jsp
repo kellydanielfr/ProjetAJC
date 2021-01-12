@@ -14,7 +14,8 @@
 
 	<div id="container">
 		<!-- zone de connexion -->
-		<div>
+		<div class="login">
+		
 			<h1>Se connecter</h1>
 		</div>
 		<form id="connectForm" action="home" method="POST">
@@ -27,6 +28,7 @@
 			<input type="submit" id='submit' value='LOGIN'>
 			<div class="error">${error}</div>
 		</form>
+		
 	</div>
 </body>
 </html>
