@@ -56,7 +56,7 @@
       <form class="formReponse" name="formReponse" action="manager" method="post">
 	      <div class="modal-body">
 	      	<input type="hidden" value="${demande.id}" name="id_conge">
-				<label for="motif">Motif du refus</label><textarea class="form-control" name="motif" id="motif" rows="3" placeholder="Entrez un motif"></textarea>
+				<label for="motif">Motif du refus</label><textarea required class="form-control" name="motif" id="motif" rows="3" placeholder="Entrez un motif"></textarea>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

@@ -32,10 +32,10 @@
       <form action="salarie" method="post">
 	      <div class="modal-body">
 	        <label for="date">Date de la demande :</label> ${aujourdhui}<br>
-	        <label for="dateDebut">Date de début :</label> <input id="dateDebut" name="dateDebut" type="date" value="${today}" min="${today}" onchange="dateFinMin()"><br>
-	        <label for="dateFin">Date de fin :</label> <input id="dateFin" name="dateFin" type="date" value="${today}" min="${today}" ><br>
-	        <label for="type">Types de congé : </label> <select id="type" name="type">
-				<option value="choose" selected="selected">Choisir un type de congé</option>
+	        <label for="dateDebut">Date de début :</label> <input required id="dateDebut" name="dateDebut" type="date" value="${today}" min="${today}" onchange="dateFinMin()"><br>
+	        <label for="dateFin">Date de fin :</label> <input required id="dateFin" name="dateFin" type="date" value="${today}" min="${today}" ><br>
+	        <label for="type">Types de congé : </label> <select required id="type" name="type">
+				<option value="" selected="selected">Choisir un type de congé</option>
 				<option value="CP">Congés payés</option>
 				<option value="CSS">Congés sans solde</option>
 				<option value="AA">Absence autorisée</option>
