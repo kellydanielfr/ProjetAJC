@@ -66,8 +66,9 @@ public class Conge {
 		this.setEtat("VALIDE");
 	}
 	
-	public void Refuser() {
+	public void Refuser(String motifRefus) {
 		this.setEtat("REFUSE");
+		this.motif=this.motif+"\n Motif refus:\n"+motifRefus;
 	}
 	
 	public int calculeNbJour() {
