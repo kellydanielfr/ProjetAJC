@@ -1,74 +1,222 @@
-.error
-{
-  color:red;
+html, body{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding: 20px;
 }
 
 
-#content
-{
-  margin:75px;
+
+.error {
+	color: red;
 }
 
-
-#addFormPC,#updateFormPC,#addFormEmp,#updateFormEmp
-{
-  display:none;
+#content {
+	margin: 75px;
 }
 
-
-body{
-    background: #F4EFE7;
+#addFormPC, #updateFormPC, #addFormEmp, #updateFormEmp {
+	display: none;
 }
-#container{
-    width:400px;
-    margin:0 auto;
-    margin-top:10%;
+
+body {
+	background: #F4EFE7;
+}
+
+#container {
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 10%;
 }
 /* Bordered form */
 #connectForm {
-    width:100%;
-    padding: 30px;
-    border: 1px solid #f1f1f1;
-    background: #fff;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	width: 100%;
+	padding: 30px;
+	border: 1px solid #f1f1f1;
+	background: #fff;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0
+		rgba(0, 0, 0, 0.24);
 }
-#container h1{
-    text-align: center;
+
+#container h1 {
+	text-align: center;
 }
 
 /* Full-width inputs */
 #connectForm input[type=text], #connectForm input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 /* Set a style for all buttons */
 #connectForm input[type=submit] {
-    background-color: #53af57;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+	background-color: #53af57;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
 }
+
 #connectForm input[type=submit]:hover {
-    background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+	background-color: white;
+	color: #53af57;
+	border: 1px solid #53af57;
 }
 
-.formDelete
-{
-	display:inline-block;
+.formDelete {
+	display: inline-block;
 }
 
-#btnDisconnect
-{
-	position : absolute;
-	right:5%;
+#btnDisconnect {
+	position: absolute;
+	right: 5%;
+}
+
+/*popup form salarie*/
+blur {
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+}
+
+a.btn {
+	width: 150px;
+	display: block;
+	margin: -25px 0 0 -75px;
+	padding: 1em 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font: 1.125em 'Arial', sans-serif;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	border-radius: 5px;
+	background: rgba(217, 67, 86, 1);
+}
+
+.modal-wrapper {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(128, 115, 90, 0.48);
+	visibility: hidden;
+	opacity: 0;	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+
+.modal-wrapper.open {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal {
+	width: 600px;
+	height: 420px;
+	display: block;
+	margin: 50% 0 0 -300px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	opacity: 0;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	border-radius: 5px;
+}
+
+.modal-wrapper.open .modal {
+	margin-top: -200px;
+	opacity: 1;
+}
+
+.head {
+	height: 32px;
+	padding: 1.5em 5%;
+	overflow: hidden;
+	background: #01bce5;
+}
+
+.btn-close {
+	display: block;
+	float: right;
+	position: relative;
+	bottom: 15px;
+	height: 40px;
+}
+
+.btn-close::before, .btn-close::after {
+	content: '';
+	width: 32px;
+	height: 6px;
+	display: block;
+	background: #fff;
+}
+
+.btn-close::before {
+	margin-top: 12px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.btn-close::after {
+	margin-top: -6px;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.modal-title {
+	line-height: 0.2;
+	color:#fff;
+}
+
+
+#popupAdd{
+	background: #fff;
+	
+}
+
+#popupAdd:hover{
+	background: #e6ccc6de;
+	
+}
+
+
+#FormFiche{
+	background:#0000;
+	border-color :1px #027d32;
+	
+}
+
+
+#btnSave{
+	
+	background-color: #048a25;
+	border: 0px;
+}
+
+	
+	.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem #ffff;
+    color:#000;
 }
