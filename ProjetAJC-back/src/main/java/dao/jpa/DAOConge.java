@@ -1,5 +1,6 @@
 package dao.jpa;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,16 +63,32 @@ public class DAOConge implements IDAOConge{
 	}
 	
 	@Override
-	public List<Conge> findAllFilter(String name) {
+	public List<Conge> findAllFilterByDate(LocalDate dateDebut, LocalDate dateFin) {
 		List<Conge> conges = new ArrayList();
 		EntityManager em=Context.getInstance().getEmf().createEntityManager();
 		try 
 		{
-			Query query= em.createQuery("from Conge e where e.login like :filter",Conge.class);
-			query.setParameter("filter", "%"+name+"%");
+			Query query= em.createQuery("from Conge e where e.dateDebut >= :dateDebut and e.dateFin <= :dateFin",Conge.class);
+			query.setParameter("dateDebut", dateDebut);
+			query.setParameter("dateFin", dateFin);
 			conges=query.getResultList();
 		}
-		catch(Exception e){System.out.println("Error findAlFilter Conge");}
+		catch(Exception e){System.out.println("Error findAllFilterByDate Conge");}
+		em.close();
+		return conges;
+	}
+	
+	@Override
+	public List<Conge> findAllFilterByService(Integer id) {
+		List<Conge> conges = new ArrayList();
+		EntityManager em=Context.getInstance().getEmf().createEntityManager();
+		try 
+		{
+			Query query= em.createQuery("Select c from Conge c left join c.service s where s.id= :id",Conge.class);
+			query.setParameter("id",id);
+			conges=query.getResultList();
+		}
+		catch(Exception e){System.out.println("Error findAllFilterByService Conge");}
 		em.close();
 		return conges;
 	}

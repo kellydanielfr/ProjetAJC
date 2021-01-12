@@ -44,7 +44,9 @@ public class test {
 //		Context.getInstance().getDaoConge().save(conge6);
 		
 //		
-//		List<Conge> test = Context.getInstance().getDaoConge().demandeSalarie(2);
+//		LocalDate dateDebut = LocalDate.parse("2021-01-12");
+//		LocalDate dateFin = LocalDate.parse("2021-01-16");
+//		List<Service> test = Context.getInstance().getDaoService().findAll();
 //		System.out.println(test);
 	}
 
