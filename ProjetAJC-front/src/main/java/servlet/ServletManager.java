@@ -33,7 +33,7 @@ public class ServletManager extends HttpServlet {
 			if (tache.equals("Valider")) {
 				conge.Valider();
 			}else if (tache.equals("Refuser")) {
-				conge.Refuser(request.getParameter("motif"));
+				conge.Refuser(request.getParameter("motifRefus"));
 			}
 			Context.getInstance().getDaoConge().save(conge);
 			doGet(request,response);

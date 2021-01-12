@@ -78,18 +78,25 @@
 		<tbody id="listDemande">
 			<c:forEach items="${demandes}" var="demande">
 				<tr>
-					<td>${demande.typeConge}</td>
+					<td>${demande.typeConge.libelle}</td>
 					<td>${demande.dateDebut}</td>
 					<td>${demande.dateFin}</td>
 					<td>${demande.nbJour}</td>
 					<td>${demande.motif}</td>
 					<td>${demande.salarie.service.libelle}</td>
-					<td>${demande.etat}</td>
+					<c:choose>
+					<c:when test="${demande.etat == 'VALIDE'}">
+					<td style="color:green">${demande.etat}</td>
+					</c:when>
+					<c:when test="${demande.etat == 'REFUSE'}">
+					<td style="color:red">${demande.etat}</td>
+					</c:when>
+					</c:choose>
 					<c:if test="${demande.etat == 'ATTENTE'}">
 						<td><form class="formReponse" name="formReponse"
 								action="salarie" method="post">
 								<input type="hidden" value="${demande.id}" name="id_conge">
-								<input type="submit" name="btnAnnuler" class="btn btn-danger"
+								<input type="submit" name="btnAnnuler" class="btn btn-warning"
 									value="Annuler">
 							</form></td>
 					</c:if>

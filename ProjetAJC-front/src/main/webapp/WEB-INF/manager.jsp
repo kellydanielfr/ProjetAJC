@@ -9,12 +9,12 @@
 <title>Espace manager</title>
 </head>
 <body>
+
 	<a id="btnDisconnect" href="disconnect"><input type="button"
 		class="btn btn-danger" value="Se deconnecter"></a>
 
 	<h1>Validation des demandes en attentes</h1>
-
-	<a href="#filtres" data-toggle="collapse">Voir filtres</a>
+<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filtres">Voir filtres</button>
 	<div id="filtres" class="collapse">
 	<form  class="formReponse" name="formReponse" action="manager" method="post">
 	<div name="filtre" style="display: flex">
@@ -47,6 +47,7 @@
 							<th>Nombre de jour</th>
 							<th>Motif</th>
 							<th>Service</th>
+							<th>Etat</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -54,19 +55,32 @@
 						<c:forEach items="${demandes}" var="demande">
 							<tr>
 								<td>${demande.salarie.nom} ${demande.salarie.prenom}</td>
-								<td>${demande.typeConge}</td>
+								<td>${demande.typeConge.libelle}</td>
 								<td>${demande.dateDebut}</td>
 								<td>${demande.dateFin}</td>
 								<td>${demande.nbJour}</td>
 								<td>${demande.motif}</td>
 								<td>${demande.salarie.service.libelle}</td>
-								<td>
+								<td>${demande.etat}</td>
+								<c:choose>
+					<c:when test="${demande.etat == 'VALIDE'}">
+					<td style="color:green">${demande.etat}</td>
+					</c:when>
+					<c:when test="${demande.etat == 'REFUSE'}">
+					<td style="color:red">${demande.etat}</td>
+					</c:when>
+					</c:choose>
+					<td>
 								<c:if test="${demande.etat == 'ATTENTE'}">
-								<input type="submit" class="btn btn-success"
-									name="btnReponse" value="Valider">
+								
+								
+								<form class="formReponse" name="formReponse" action="manager" method="post">
+								<input type="hidden" value="${demande.id}" name="id_conge">
+								<input type="submit" class="btn btn-success" name="btnReponse" value="Valider">
+								</form>
 									<button type="button" name="btnReponse" class="btn btn-danger"
 										value="Refuser" data-toggle="modal"
-										data-target="#popupRefuser">Refuser</button> <!-- Modal -->
+										data-target="#popupRefuser">Refuser</button>
 									<div class="modal fade" id="popupRefuser" tabindex="-1"
 										role="dialog" aria-labelledby="popupRefuserLabel"
 										aria-hidden="true">
@@ -80,13 +94,12 @@
 														<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
-												<form class="formReponse" name="formReponse"
-													action="manager" method="post">
+												<form class="formReponse" name="formReponse" action="manager" method="post">
 													<div class="modal-body">
 														<input type="hidden" value="${demande.id}" name="id_conge">
-														<label for="motif">Motif du refus</label>
-														<textarea required class="form-control" name="motif"
-															id="motif" rows="3" placeholder="Entrez un motif"></textarea>
+														<label for="motifRefus">Motif du refus</label>
+														<textarea required class="form-control" name="motifRefus"
+															id="motifRefus" rows="3" placeholder="Entrez un motif"></textarea>
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
@@ -98,7 +111,9 @@
 											</div>
 										</div>
 									</div>
-									</c:if></td>
+									
+									</c:if>
+									</td>
 							</tr>
 
 						</c:forEach>
