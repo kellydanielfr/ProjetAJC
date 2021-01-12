@@ -13,45 +13,42 @@ public class test {
 
 	public static void main(String[] args) {
 
-		/*LocalDate date1 = LocalDate.of(2015, 02, 18);
-		LocalDate date2 = LocalDate.of(2015, 02, 20);
-		Service service = new Service("service");
-			service = Context.getInstance().getDaoService().save(service);
-			
-				Salarie salarie = new Salarie("salarie@mail", "pass", "nom", "prenom", service);
-				Manager manager = new Manager("manager@mail", "pass", "nom", "prenom", service );
-				
-				Context.getInstance().getDaoManager().save(manager);
-				salarie = Context.getInstance().getDaoSalarie().save(salarie);
-				
-				Conge conge0 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				Conge conge1 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				Conge conge2 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				Conge conge3 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				Conge conge4 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				Conge conge5 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				Conge conge6 = new Conge(salarie, TypeConge.AJ, date1, date2, "motif");
-				
-				
 		
+//		Service service1 = new Service("Compta");
+//		service1 = Context.getInstance().getDaoService().save(service1);
+//		Service service2 = new Service("Secretaire");
+//		service2 = Context.getInstance().getDaoService().save(service2);
+//		Service service3 = new Service("Developpeur");
+//		service3 = Context.getInstance().getDaoService().save(service3);
 //		
-//		LocalDate dateDebut = LocalDate.parse("2021-01-12");
-//		LocalDate dateFin = LocalDate.parse("2021-01-16");
-<<<<<<< Updated upstream
-
-//		Service service = new Service("service4");
-//		service = Context.getInstance().getDaoService().save(service);
+//		Manager manager = new Manager("manager@mail", "pass", "Abid", "Jordan", service1);
+//		Context.getInstance().getDaoManager().save(manager);
 //		
-//		Salarie salarie = new Salarie("salarie2@mail", "pass", "nom", "prenom", service);
+//		Salarie salarie1 = new Salarie("vanessa@mail", "pass", "Desmartin", "Vanessa", service1);
+//		Salarie salarie2 = new Salarie("Eli@mail", "pass", "Dupont", "Elisabeth", service2);
+//		Salarie salarie3 = new Salarie("kelly@mail", "pass", "Daniel", "Kelly", service3);
+//		salarie1 = Context.getInstance().getDaoSalarie().save(salarie1);
+//		salarie2 = Context.getInstance().getDaoSalarie().save(salarie2);
+//		salarie3 = Context.getInstance().getDaoSalarie().save(salarie3);
 //		
-//		salarie = Context.getInstance().getDaoSalarie().save(salarie);
 //		
-		List<Conge> test = Context.getInstance().getDaoConge().findAllFilterByService(1);
-		System.out.println(test);
-=======
-//		List<Service> test = Context.getInstance().getDaoService().findAll();
-//		System.out.println(test);*/
->>>>>>> Stashed changes
+//
+//		
+//		Conge conge0 = new Conge(salarie1, TypeConge.CP, LocalDate.of(2021, 01, 18), LocalDate.of(2021, 01, 20), "Vacances aux caraibes");
+//		Conge conge1 = new Conge(salarie1, TypeConge.CJ, LocalDate.of(2021, 02, 18), LocalDate.of(2021, 02, 20), "Vacances en Australie");
+//		Conge conge2 = new Conge(salarie1, TypeConge.CSS, LocalDate.of(2021, 03, 18), LocalDate.of(2021, 03, 20), "Vacances en Egypte");
+//		Conge conge3 = new Conge(salarie2, TypeConge.CP, LocalDate.of(2021, 01, 18), LocalDate.of(2021, 01, 20), "Vacances aux Etats-Unis");
+//		Conge conge4 = new Conge(salarie2, TypeConge.CA, LocalDate.of(2021, 02, 18), LocalDate.of(2021, 02, 20), "Vacances en Finlande");
+//		Conge conge5 = new Conge(salarie3, TypeConge.CP, LocalDate.of(2021, 01, 13), LocalDate.of(2021, 02, 15), "Vacances en Espagnes");
+//		Conge conge6 = new Conge(salarie3, TypeConge.CP, LocalDate.of(2021, 02, 18), LocalDate.of(2021, 02, 20), "Vacances au Portugal");
+//
+//		Context.getInstance().getDaoConge().save(conge0);
+//		Context.getInstance().getDaoConge().save(conge1);
+//		Context.getInstance().getDaoConge().save(conge2);
+//		Context.getInstance().getDaoConge().save(conge3);
+//		Context.getInstance().getDaoConge().save(conge4);
+//		Context.getInstance().getDaoConge().save(conge5);
+//		Context.getInstance().getDaoConge().save(conge6);
 	}
 
 }

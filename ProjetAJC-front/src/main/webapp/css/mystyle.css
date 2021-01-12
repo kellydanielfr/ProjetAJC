@@ -123,7 +123,7 @@ a.btn {
 	visibility: visible;
 }
 
-.modal {
+.modalCreer {
 	width: 600px;
 	height: 420px;
 	display: block;
@@ -140,7 +140,7 @@ a.btn {
 	border-radius: 5px;
 }
 
-.modal-wrapper.open .modal {
+.modal-wrapper.open .modalCreer {
 	margin-top: -200px;
 	opacity: 1;
 }

@@ -23,7 +23,7 @@
 	<!-- Modal -->
 
 		<div class="modal-wrapper" role="document">
-			<div class="modal">
+			<div class="modalCreer">
 				<div class="head">
 				<a class="btn-close trigger" href="javascript:;"></a>
 					<h5 class="modal-title" id="popupAjouterLabel">Créer une
@@ -96,7 +96,7 @@
 						<td><form class="formReponse" name="formReponse"
 								action="salarie" method="post">
 								<input type="hidden" value="${demande.id}" name="id_conge">
-								<input type="submit" name="btnAnnuler" class="btn btn-danger"
+								<input type="submit" name="btnAnnuler" class="btn btn-warning"
 									value="Annuler">
 							</form></td>
 					</c:if>
