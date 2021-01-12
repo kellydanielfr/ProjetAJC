@@ -16,23 +16,21 @@
 	<h1>Mes demandes</h1>
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-success" data-toggle="modal"
-		data-target="#popupAjouter">Créer une demande de congé</button>
+	<button type="button" class="btn trigger" data-toggle="modal"
+		id="popupAdd">Créer une demande de congé</button>
 
+	
 	<!-- Modal -->
-	<div class="modal fade" id="popupAjouter" tabindex="-1" role="dialog"
-		aria-labelledby="popupAjouterLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
+
+		<div class="modal-wrapper" role="document">
+			<div class="modal">
+				<div class="head">
+				<a class="btn-close trigger" href="javascript:;"></a>
 					<h5 class="modal-title" id="popupAjouterLabel">Créer une
 						demande de congé</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+						
 				</div>
-				<form action="salarie" method="post">
+				<form action="salarie" method="post" id="FormFiche">
 					<div class="modal-body">
 						<label for="date">Date de la demande :</label> ${aujourdhui}<br>
 						<label for="dateDebut">Date de début :</label> <input required
@@ -53,15 +51,15 @@
 							placeholder="Entrez un motif"></textarea>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Fermer</button>
-						<button type="submit" class="btn btn-primary" name="btnAjouter"
+						<button type="button" class="btn trigger"
+							data-dismiss="modal">Annuler</button>
+						<button type="submit" class="btn btn-primary" id="btnSave" name="btnAjouter"
 							value="Ajouter">Sauvegarder</button>
 					</div>
 				</form>
 			</div>
 		</div>
-	</div>
+	
 
 	<br>
 	<table class="table table-striped">
@@ -110,6 +108,16 @@
 		dateFin.value = dateDebut.value;
 		dateFin.min = dateDebut.value;
 	}
+	
+	//popup
+	
+	$( document ).ready(function() {
+  $('.trigger').click(function() {
+     $('.modal-wrapper').toggleClass('open');
+    $('.modal-wrapper').toggleClass('blur');
+     return false;
+  });
+});
 </script>
 
 </html>
