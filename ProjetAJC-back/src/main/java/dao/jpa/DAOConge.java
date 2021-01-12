@@ -84,11 +84,28 @@ public class DAOConge implements IDAOConge{
 		EntityManager em=Context.getInstance().getEmf().createEntityManager();
 		try 
 		{
-			Query query= em.createQuery("Select c from Conge c left join c.service s where s.id= :id",Conge.class);
+			Query query= em.createQuery("Select c from Conge c left join c.salarie s left join s.service b where s.id=c.salarie and b.id=:id",Conge.class);
 			query.setParameter("id",id);
 			conges=query.getResultList();
 		}
 		catch(Exception e){System.out.println("Error findAllFilterByService Conge");}
+		em.close();
+		return conges;
+	}
+	
+	@Override
+	public List<Conge> findAllFilterByServiceDate(Integer id, LocalDate dateDebut, LocalDate dateFin) {
+		List<Conge> conges = new ArrayList();
+		EntityManager em=Context.getInstance().getEmf().createEntityManager();
+		try 
+		{
+			Query query= em.createQuery("Select c from Conge c left join c.salarie s left join s.service b where s.id=c.salarie and b.id=:id and c.dateDebut >= :dateDebut and c.dateFin <= :dateFin",Conge.class);
+			query.setParameter("id",id);
+			query.setParameter("dateDebut", dateDebut);
+			query.setParameter("dateFin", dateFin);
+			conges=query.getResultList();
+		}
+		catch(Exception e){System.out.println("Error findAllFilterByServiceDate Conge");}
 		em.close();
 		return conges;
 	}

@@ -38,12 +38,40 @@ public class ServletManager extends HttpServlet {
 			Context.getInstance().getDaoConge().save(conge);
 			doGet(request,response);
 		}else if(request.getParameterMap().containsKey("btnFiltre")) {
-			LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebutFiltre"));
-			LocalDate dateFin = LocalDate.parse(request.getParameter("dateFinFiltre"));
-			Integer idService = Integer.parseInt(request.getParameter("service"));
+			String dateDebutParam = request.getParameter("dateDebutFiltre");
+			String dateFinParam = request.getParameter("dateFinFiltre");
+			String idServiceParam = request.getParameter("service");
 			
-			List<Conge> listDate = Context.getInstance().getDaoConge().findAllFilterByDate(dateDebut, dateFin);
-			request.setAttribute("demandes", listDate);
+			
+			if(dateDebutParam.isEmpty() && !idServiceParam.isEmpty()) {
+				Integer idService = Integer.parseInt(idServiceParam);
+				List<Conge> conge = Context.getInstance().getDaoConge().findAllFilterByService(idService);
+				request.setAttribute("demandes", conge);
+			}else if(!dateDebutParam.isEmpty() && idServiceParam.isEmpty()) {
+				LocalDate dateDebut = LocalDate.parse(dateDebutParam);
+				LocalDate dateFin = LocalDate.parse(dateFinParam);
+				List<Conge> conge = Context.getInstance().getDaoConge().findAllFilterByDate(dateDebut, dateFin);
+				request.setAttribute("demandes", conge);
+			}else if(!dateDebutParam.isEmpty() && !idServiceParam.isEmpty()) {
+				LocalDate dateDebut = LocalDate.parse(dateDebutParam);
+				LocalDate dateFin = LocalDate.parse(dateFinParam);
+				Integer idService = Integer.parseInt(idServiceParam);
+				List<Conge> conge = Context.getInstance().getDaoConge().findAllFilterByServiceDate(idService, dateDebut, dateFin);
+				request.setAttribute("demandes", conge);
+			}else {
+				doGet(request,response);
+			}
+			
+			List<Service> services = Context.getInstance().getDaoService().findAll();
+			request.setAttribute("services", services);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/manager.jsp").forward(request, response);
+		}else if(request.getParameterMap().containsKey("btnFiltreOff")) {
+			doGet(request,response);
+		}else if(request.getParameterMap().containsKey("btnAll")) {
+			List<Conge> allDemende = Context.getInstance().getDaoConge().findAll();
+			request.setAttribute("demandes", allDemende);
+			List<Service> services = Context.getInstance().getDaoService().findAll();
+			request.setAttribute("services", services);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/manager.jsp").forward(request, response);
 		}
 		

@@ -74,6 +74,7 @@
 				<th>Motif</th>
 				<th>Service</th>
 				<th>Etat</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody id="listDemande">

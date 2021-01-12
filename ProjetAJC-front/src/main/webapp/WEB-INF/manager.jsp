@@ -14,16 +14,12 @@
 
 	<h1>Validation des demandes en attentes</h1>
 
-	
-	<button type="button" class="btn btn-success">Filtrer par date</button>
-	<button type="button" class="btn btn-success">Filtrer par service</button>
-	<form class="formReponse" name="formReponse" action="manager" method="post">
-	<div name="filtreDate">
-		<label for="dateDebutFiltre">Date de début :</label> <input required id="dateDebutFiltre" name="dateDebutFiltre" type="date" onchange="dateFinMinFiltre()"><br>
-		<label for="dateFinFiltre">Date de fin :</label> <input required id="dateFinFiltre" name="dateFinFiltre" type="date" value="" min="">
-	</div>
-	
-	<div name="filtreService">
+	<a href="#filtres" data-toggle="collapse">Voir filtres</a>
+	<div id="filtres" class="collapse">
+	<form  class="formReponse" name="formReponse" action="manager" method="post">
+	<div name="filtre" style="display: flex">
+		<label for="dateDebutFiltre">Date de début :</label> <input id="dateDebutFiltre" name="dateDebutFiltre" type="date" onchange="dateFinMinFiltre()"><br>
+		<label for="dateFinFiltre">Date de fin :</label> <input id="dateFinFiltre" name="dateFinFiltre" type="date" value="" min="">	
 	<label for="service">Services : </label> <select id="service" name="service">
 							<option value="" selected="selected">Choisir un service</option>
 							<c:forEach items="${services}" var="service">
@@ -32,7 +28,10 @@
 						</select>
 						</div>
 	<button type="submit" name="btnFiltre" class="btn btn-primary" name="btnFiltre" value="Filtrer">Filtrer</button>
+	<button type="submit" name="btnFiltreOff" class="btn btn-primary" name="btnFiltreOff" value="FilbtnFiltreOfftrer">Supprimer les filtres</button>
+	<button type="submit" name="btnAll" class="btn btn-primary" name="btnAll" value="btnAll">Voir toutes les demandes de congé</button>
 	</form>
+	</div>
 	
 	<div id="content">
 		<div class="tab-content" id="pills-tabContent">
@@ -48,18 +47,20 @@
 							<th>Nombre de jour</th>
 							<th>Motif</th>
 							<th>Service</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody id="listDemande">
 						<c:forEach items="${demandes}" var="demande">
 							<tr>
-								<td>${demande.salarie.nom}${demande.salarie.prenom}</td>
+								<td>${demande.salarie.nom} ${demande.salarie.prenom}</td>
 								<td>${demande.typeConge}</td>
 								<td>${demande.dateDebut}</td>
 								<td>${demande.dateFin}</td>
 								<td>${demande.nbJour}</td>
 								<td>${demande.motif}</td>
 								<td>${demande.salarie.service.libelle}</td>
+								<td>
 								<c:if test="${demande.etat == 'ATTENTE'}">
 								<input type="submit" class="btn btn-success"
 									name="btnReponse" value="Valider">
@@ -97,7 +98,7 @@
 											</div>
 										</div>
 									</div>
-									</c:if>
+									</c:if></td>
 							</tr>
 
 						</c:forEach>

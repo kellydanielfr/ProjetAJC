@@ -34,7 +34,6 @@ public class ServletSalarie extends HttpServlet {
 			Conge conge = Context.getInstance().getDaoConge().findById(Integer.parseInt(request.getParameter("id_conge")));
 			Context.getInstance().getDaoConge().delete(conge);
 		}else if(request.getParameterMap().containsKey("btnAjouter")) {
-			LocalDate date = LocalDate.parse(request.getParameter("date"));
 			LocalDate dateDebut = LocalDate.parse(request.getParameter("dateDebut"));
 			LocalDate dateFin = LocalDate.parse(request.getParameter("dateFin"));
 			TypeConge type = TypeConge.valueOf(request.getParameter("type"));

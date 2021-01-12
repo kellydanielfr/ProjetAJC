@@ -16,4 +16,6 @@ public interface IDAOConge extends IDAO<Conge,Integer>{
 	List<Conge> findAllFilterByService(Integer id);
 
 	List<Conge> findAllFilterByDate(LocalDate dateDebut, LocalDate dateFin);
+
+	List<Conge> findAllFilterByServiceDate(Integer id, LocalDate dateDebut, LocalDate dateFin);
 }

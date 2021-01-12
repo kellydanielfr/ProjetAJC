@@ -46,8 +46,16 @@ public class test {
 //		
 //		LocalDate dateDebut = LocalDate.parse("2021-01-12");
 //		LocalDate dateFin = LocalDate.parse("2021-01-16");
-//		List<Service> test = Context.getInstance().getDaoService().findAll();
-//		System.out.println(test);
+
+//		Service service = new Service("service4");
+//		service = Context.getInstance().getDaoService().save(service);
+//		
+//		Salarie salarie = new Salarie("salarie2@mail", "pass", "nom", "prenom", service);
+//		
+//		salarie = Context.getInstance().getDaoSalarie().save(salarie);
+//		
+		List<Conge> test = Context.getInstance().getDaoConge().findAllFilterByService(1);
+		System.out.println(test);
 	}
 
 }
